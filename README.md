@@ -1,30 +1,48 @@
-# eodms-sentinel2-firemapping
-Sentinel 2 real time data - use case - fire mapping
+# sentinel-notebooks
+Reusable Sentinel workflows for notebook-based geospatial analysis.
 
-## Scientific value of the Jupyter workflow
+This repository provides reference notebooks and Python scripts for common Earth observation tasks: data discovery, download, preprocessing, spectral index generation, and quick-look visualization.
 
-The Jupyter notebook in this repository adds scientific value by making fire-mapping analysis transparent, testable, and reproducible.
+While current examples include wildfire mapping, the same workflow can support other application domains such as LEAF toolbox vegetation analysis, disturbance monitoring, and environmental change assessment across Sentinel missions.
 
-1. Reproducible geospatial science
-- The full processing chain (input geometry, scene selection, index generation, and visualization) is documented cell-by-cell.
-- This makes it easier to rerun analyses for new fire events and compare results consistently across dates and locations.
+## Why this repository is useful
 
-2. Quantitative burn assessment support
-- The workflow demonstrates fire-relevant spectral products such as NBR and BAI2 from Sentinel-2.
-- These products support scientifically grounded interpretation of burn severity patterns rather than visual-only inspection.
+1. Reproducible analysis
+- End-to-end processing is documented in notebooks and scripts so methods can be rerun consistently across AOIs and dates.
 
-3. Better quality control and uncertainty checks
-- Intermediate outputs can be inspected directly, improving detection of cloud effects, scene mismatch, and AOI issues.
-- This helps reduce false interpretation and increases confidence in downstream fire products.
+2. Flexible spectral workflows
+- The code is structured so index generation can be adapted for different phenomena (for example NBR/BAI2 for fire, NDVI and related metrics for vegetation-focused workflows).
 
-4. Faster method development and validation
-- Researchers can quickly test alternate indices, thresholds, date windows, and AOIs in one interactive environment.
-- The notebook format accelerates hypothesis testing before operationalizing methods in automated scripts.
+3. Quality control visibility
+- Intermediate outputs (masks, bands, thumbnails, derived rasters) can be inspected to catch cloud contamination, scene mismatch, and AOI issues early.
 
-5. Stronger knowledge transfer
-- The notebook captures both the method and rationale, supporting peer review, onboarding, and handoff to operations teams.
+4. Path to operationalization
+- Notebook logic is paired with script-based automation patterns, making it easier to move from exploration to repeatable processing.
 
-## Where to start
+## Repository at a glance
 
-- Notebook: [examples/Sentinel2_Jun2025_FlinFlonDenareBeach_FireDemo.ipynb](examples/Sentinel2_Jun2025_FlinFlonDenareBeach_FireDemo.ipynb)
-- Notebook details: [examples/README.md](examples/README.md)
+- data/: reference geospatial inputs used by examples.
+- examples/: notebook demos for Sentinel processing patterns.
+- dNBR_Calculate_py/: scripts for NBR and differenced NBR style processing.
+- external_stac_api/: scripts that use external STAC APIs for scene retrieval and analysis.
+- external_stacAPI_example/: notebook example using external STAC access.
+- fire_operationalization_py/: automation example for event-driven processing (currently fire oriented, reusable as a pattern).
+
+## Getting started
+
+1. Clone the repository.
+2. Create and activate a Python virtual environment.
+3. Install dependencies for the workflow you want to run (for example in fire_operationalization_py/requirements.txt).
+4. Open a notebook in examples/ or external_stacAPI_example/ and run cells step by step.
+5. Adapt index logic, thresholds, and outputs for your target application (fire, LEAF-style vegetation monitoring, or another Sentinel use case).
+
+## Example entry points
+
+- Notebook demo: [examples/Sentinel2_Jun2025_FlinFlonDenareBeach_FireDemo.ipynb](examples/Sentinel2_Jun2025_FlinFlonDenareBeach_FireDemo.ipynb)
+- STAC notebook demo: [external_stacAPI_example/FireAlgorithmVerify_Download.ipynb](external_stacAPI_example/FireAlgorithmVerify_Download.ipynb)
+- Automation scripts: [fire_operationalization_py/README.md](fire_operationalization_py/README.md)
+
+## Notes
+
+- Existing fire-specific scripts remain available and unchanged.
+- Future additions can include domain-focused examples (for example LEAF toolbox workflows) while sharing the same core Sentinel processing pipeline.
