@@ -5,6 +5,13 @@ This repository provides reference notebooks and Python scripts for common Earth
 
 While current examples include wildfire mapping, the same workflow can support other application domains such as LEAF toolbox vegetation analysis, disturbance monitoring, and environmental change assessment across Sentinel missions.
 
+## Data source alignment
+
+These notebooks are intended to work well with the Sentinel Products Canada Mirror:
+https://registry.opendata.aws/sentinel-products-ca-mirror/
+
+This mirror is Canada's value-add contribution to the Sentinel community. The data is curated for Canadian applications and is intended to complement the radarsat-notebooks repository for multi-mission workflows.
+
 ## Why this repository is useful
 
 1. Reproducible analysis
